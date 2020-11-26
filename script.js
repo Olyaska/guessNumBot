@@ -11,7 +11,7 @@ const guessNum = function() {
     const random = Math.ceil(Math.random()*100);
     console.log('random: ', random);
     
-    let attempts = 3;
+    let attempts = 10;
     let userTry = prompt('Угадай число от 1 до 100');
 
     const checkUserAnswer = function() {
