@@ -10,7 +10,7 @@ const guessNum = function() {
 
     const checkUserAnswer = function() {
         if (userTry === null) {
-            alert('Игра окончена!')
+            alert('Игра окончена!');
         } else {
             while (!isNumber(userTry)) { 
                 userTry = prompt('Введи число!');
