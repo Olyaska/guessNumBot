@@ -33,13 +33,11 @@ const guessNum = function() {
                 if (attempts > 0 ) {
                     if (userTry > random) {
                         userTry = prompt('Загаданное число меньше. Осталось ' + attempts + ' попыток');
-                        attempts--;
-                        checkUserAnswer();
                     } else if (userTry < random) {
                         userTry = prompt('Загаданное число больше. Осталось ' + attempts + ' попыток');
-                        attempts--;
-                        checkUserAnswer();
                     }
+                    attempts--;
+                    checkUserAnswer();
                 } else {
                     finish = confirm('Попытки закончились! Хотите сыграть еще?') ? guessNum() : quit();
                 }
