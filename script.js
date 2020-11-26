@@ -11,7 +11,7 @@ const guessNum = function() {
     const random = Math.ceil(Math.random()*100);
     console.log('random: ', random);
     
-    let attempts = 10;
+    let attempts = 3;
     let userTry = prompt('Угадай число от 1 до 100');
 
     const checkUserAnswer = function() {
@@ -27,30 +27,26 @@ const guessNum = function() {
             if (+userTry === random) {
                 finish = confirm('Поздравляю, Вы угадали!!! Хотите сыграть еще?');
                 if (finish === true) {
-                    start();
+                    guessNum();
                 }
             } else {
-                while (attempts-- > 0) {
+                if (attempts > 0 ) {
                     if (userTry > random) {
                         userTry = prompt('Загаданное число меньше. Осталось ' + attempts + ' попыток');
+                        attempts--;
                         checkUserAnswer();
                     } else if (userTry < random) {
                         userTry = prompt('Загаданное число больше. Осталось ' + attempts + ' попыток');
+                        attempts--;
                         checkUserAnswer();
                     }
-                } 
-                finish = confirm('Попытки закончились! Хотите сыграть еще?'); // не могу понять, как выйти: Когда нажимаю ок на 'Игра окончена! До свидания!'Б все равно возвращается в эту строчку.
-                if (finish === true) {
-                    start();
                 } else {
-                    quit();
+                    finish = confirm('Попытки закончились! Хотите сыграть еще?') ? guessNum() : quit();
                 }
             }
         }
     };
-
-    return checkUserAnswer();
+    checkUserAnswer();
 };
 
-const start = guessNum;
-start();
+guessNum();
